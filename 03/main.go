@@ -81,13 +81,13 @@ func main() {
 
   coordsArray := strings.Split(string(data), "\n")
 
-  xCoords := strings.Split(coordsArray[0], ",")
-  yCoords := strings.Split(coordsArray[1], ",")
+  firstWire := strings.Split(coordsArray[0], ",")
+  secondWire := strings.Split(coordsArray[1], ",")
 
   grid := make(map[Coordinates]int)
 
   pos, steps := Coordinates{}, 0
-  for _, direction := range xCoords {
+  for _, direction := range firstWire {
     coord, length := parseDirection(direction)
     for i := 0; i < length; i++ {
       pos = pos.calcCoord(coord, "add")
@@ -99,7 +99,7 @@ func main() {
   pt1, pt2 := math.MaxInt32, math.MaxInt32
 
   pos, steps = Coordinates{}, 0
-  for _, direction := range yCoords {
+  for _, direction := range secondWire {
     coord, length := parseDirection(direction)
 
     for i := 0; i < length; i++ {
